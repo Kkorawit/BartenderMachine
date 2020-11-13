@@ -25,7 +25,6 @@ public class Main {
                     break;
                 case 2:
                     mc.chooseMenu();
-//                    mc.receiveFromCustomer();
                     break;
                 case 3:
                     mc.createMenu();

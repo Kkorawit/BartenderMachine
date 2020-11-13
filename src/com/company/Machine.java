@@ -38,11 +38,11 @@ public class Machine {
                 menuPrice = allMenuAndPrice[i].getPrice();
             }
         }
-        System.out.println("Your menu is : " +allMenuAndPrice[customerMenu-1].getName());
+        System.out.println("Your menu is : " + allMenuAndPrice[customerMenu - 1].getName());
         System.out.println("Price : " + menuPrice);
-        System.out.println("Shaking Time : " + allMenuAndPrice[customerMenu-1].getShakeTime());
+        System.out.println("Shaking Time : " + allMenuAndPrice[customerMenu - 1].getShakeTime());
         receiveMoneyFromCustomer();
-        shaking(allMenuAndPrice[customerMenu-1].getShakeTime());
+        shaking(allMenuAndPrice[customerMenu - 1].getShakeTime());
     }
 
     //==========CHOICE 3==========
@@ -59,19 +59,19 @@ public class Machine {
 
     public void showAllIngredient() {
         for (int i = 0; i < allIngredientAndPRice.length; i++) {
-            System.out.println((i + 1) + " : " + allIngredientAndPRice[i].getName()+ " " + allIngredientAndPRice[i].getPrice() + " Bath.");
+            System.out.println((i + 1) + " : " + allIngredientAndPRice[i].getName() + " " + allIngredientAndPRice[i].getPrice() + " Bath.");
         }
     }
 
     public void chooseIngredient() {
         System.out.println("-+-+-+ Please Choose your Ingredients +-+-+-");
         resetCustomerIngerdients();
-        for(int count = 0; count < customerIngredients.length; count++) {
+        for (int count = 0; count < customerIngredients.length; count++) {
             chooseIngredients = 0;
             System.out.print("Ingredient " + (count + 1) + " : ");
             chooseIngredients = scn.nextInt() - 1;
-            for (int i = 0; i < customerIngredients.length ; i++){
-                if (customerIngredients[i] == 0){
+            for (int i = 0; i < customerIngredients.length; i++) {
+                if (customerIngredients[i] == 0) {
                     customerIngredients[i] = chooseIngredients;
                     totalPrice += allIngredientAndPRice[customerIngredients[i]].getPrice();
                     break;
@@ -79,60 +79,71 @@ public class Machine {
             }
         }
     }
-    public void showIngredient(){
+
+    public void showIngredient() {
         System.out.print("Your Ingredients :");
-        for(int i = 0 ; i < customerIngredients.length ; i++) {
-            System.out.print(" " + allIngredientAndPRice[customerIngredients[i]].getName() );
+        for (int i = 0; i < customerIngredients.length; i++) {
+            System.out.print(" " + allIngredientAndPRice[customerIngredients[i]].getName());
         }
         System.out.println("\nTotal Price : " + totalPrice);
     }
+
     public void chooseShakeTime() throws InterruptedException {
-        do{
+        do {
             System.out.print("Choose Your Shaking Time (5-15 second) : ");
             time = scn.nextInt();
             if (time >= 5 && time <= 15) {
                 shakeTime = time;
-            }
-            else System.out.println("Please Try again");
-        }while (time < 5 || time > 15);
+            } else System.out.println("Please Try again");
+        } while (time < 5 || time > 15);
     }
+
     public void shaking(int time) throws InterruptedException {
         do {
             Thread.sleep(1000);
             System.out.println("Shaking Finish in : " + time);
             time--;
-        }while (time != 0);
+        } while (time != 0);
     }
+
     public void addIngredient() throws InterruptedException {
-        for (int i = 0; i < customerIngredients.length; i++){
+        for (int i = 0; i < customerIngredients.length; i++) {
             Thread.sleep(500);
-            System.out.println("Adding ... " + allIngredientAndPRice[customerIngredients[i]].getName() + " ..." );
+            System.out.println("Adding ... " + allIngredientAndPRice[customerIngredients[i]].getName() + " ...");
         }
     }
-    public void resetCustomerIngerdients(){
-        for(int i = 0; i < customerIngredients.length; i++){customerIngredients[i] = 0; totalPrice = 0; }
+
+    public void resetCustomerIngerdients() {
+        for (int i = 0; i < customerIngredients.length; i++) {
+            customerIngredients[i] = 0;
+            totalPrice = 0;
+        }
     }
 
-//    ========== MONEY TRANSACTION ==========
-        public Machine( int moneyInMachine){this.moneyInMachine = moneyInMachine;}
-        public void addMoneyToMachine ( int money){ this.moneyInMachine += money; }
+    //    ========== MONEY TRANSACTION ==========
+    public Machine(int moneyInMachine) {
+        this.moneyInMachine = moneyInMachine;
+    }
 
-        public void receiveMoneyFromCustomer(){
-            System.out.print("Please input your money : ");
-            int money = scn.nextInt();
-            customerMoney += money;
-            if(customerMoney < totalPrice){
-                System.out.println("*****NOT ENOUGH MONEY*****");
-                System.out.println("**PLEASE INPUT MORE MONEY**");
-                receiveMoneyFromCustomer();
-            }
-            else if(customerMoney > totalPrice){
-                change = customerMoney - totalPrice;
-                moneyInMachine += customerMoney;
-                moneyInMachine -= change;
-                System.out.println("Your Change : " + change + " Bath.");
-            }
+    public void addMoneyToMachine(int money) {
+        this.moneyInMachine += money;
+    }
 
+    public void receiveMoneyFromCustomer() {
+        System.out.print("Please input your money : ");
+        int money = scn.nextInt();
+        customerMoney += money;
+        if (customerMoney < totalPrice) {
+            System.out.println("*****NOT ENOUGH MONEY*****");
+            System.out.println("**PLEASE INPUT MORE MONEY**");
+            receiveMoneyFromCustomer();
+        } else if (customerMoney > totalPrice) {
+            change = customerMoney - totalPrice;
+            moneyInMachine += customerMoney;
+            moneyInMachine -= change;
+            System.out.println("Your Change : " + change + " Bath.");
         }
+
+    }
 
 }

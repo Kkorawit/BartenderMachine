@@ -35,12 +35,10 @@ public class Main {
             System.out.print("\nDone ? " + "  " + "Yes or No : ");
             isDone = scn.next().toLowerCase();
             if ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no"))) {
-                do {
+
                     System.out.println("Please Try Again");
                     System.out.print("Done ?" + "  " + "Yes or No :");
                     isDone = scn.next().toLowerCase();
-
-                } while (isDone.equals("no"));
             }
         } while (isDone.equals("no") );
         System.out.println("===== Thank You <3 =====");

@@ -99,11 +99,13 @@ public class Machine {
     }
 
     public void shaking(int time) throws InterruptedException {
+        System.out.println("***StART SHAKING***");
         do {
             Thread.sleep(1000);
             System.out.println("Shaking Finish in : " + time);
             time--;
         } while (time != 0);
+        System.out.println("***FINISH!!***");
     }
 
     public void addIngredient() throws InterruptedException {
@@ -133,16 +135,22 @@ public class Machine {
         System.out.print("Please input your money : ");
         int money = scn.nextInt();
         customerMoney += money;
-        if (customerMoney < totalPrice) {
+        if (customerMoney < totalPrice || customerMoney < menuPrice) {
             System.out.println("*****NOT ENOUGH MONEY*****");
             System.out.println("**PLEASE INPUT MORE MONEY**");
             receiveMoneyFromCustomer();
-        } else if (customerMoney > totalPrice) {
+        } else if (customerMoney > totalPrice || customerMoney > menuPrice) {
             change = customerMoney - totalPrice;
+            change = customerMoney - menuPrice;
             moneyInMachine += customerMoney;
             moneyInMachine -= change;
             System.out.println("Your Change : " + change + " Bath.");
         }
+//        if(customerMoney < menuPrice){
+//            System.out.println("*****NOT ENOUGH MONEY*****");
+//            System.out.println("**PLEASE INPUT MORE MONEY**");
+//            receiveMoneyFromCustomer();
+//        }
 
     }
 

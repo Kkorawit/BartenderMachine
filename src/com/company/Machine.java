@@ -10,7 +10,7 @@ public class Machine {
     private int chooseIngredients;
     private int[] customerIngredients = new int[5];
     private int customerMenu;
-    private Ingredient[] allIngredientAndPRice = {new Ingredient("WATER", 1), new Ingredient("LEMON", 2), new Ingredient("BROWNSUGAR", 3), new Ingredient("COLDWATER", 4), new Ingredient("ICE", 5), new Ingredient("LIMEADE", 6), new Ingredient("STRAWBERRY", 7), new Ingredient("LEMONJUICE", 8), new Ingredient("MINT", 9), new Ingredient("POMEGRANATESYRUP", 10), new Ingredient("LEMONSODA", 11), new Ingredient("CHERRYSYRUP", 12), new Ingredient("ROSEMARRYSYRUP", 13), new Ingredient("PINEAPPLEJUICE", 14)};
+    private Ingredient[] allIngredientAndPRice = {new Ingredient("WATER", 10), new Ingredient("LEMON", 20), new Ingredient("BROWNSUGAR", 15), new Ingredient("COLDWATER", 13), new Ingredient("ICE", 8), new Ingredient("LIMEADE", 30), new Ingredient("STRAWBERRY", 27), new Ingredient("LEMONJUICE", 29), new Ingredient("MINT", 12), new Ingredient("POMEGRANATESYRUP", 34), new Ingredient("LEMONSODA", 26), new Ingredient("CHERRYSYRUP", 42), new Ingredient("ROSEMARRYSYRUP", 24), new Ingredient("PINEAPPLEJUICE", 28)};
     private Menu[] allMenuAndPrice = {new Menu("LEMONADE", 50, 10), new Menu("GRAPE FRUIT ROSEMARRY", 60, 10), new Menu("CHIRLEY TEMPLE", 70, 70), new Menu("STRAWBERRY LEMONADE", 80, 10), new Menu("PINEAPPLE CHERRY MOCKTAIL", 10, 50)};
     private int menuPrice;
     private int totalPrice;
@@ -24,7 +24,7 @@ public class Machine {
     public void showMenu() {
         System.out.println("========== MENU ==========");
         for (int i = 0; i < allMenuAndPrice.length; i++) {
-            System.out.println(allMenuAndPrice[i].getName());
+            System.out.println( (i+1) + " " +  allMenuAndPrice[i].getName());
         }
     }
 
@@ -32,17 +32,18 @@ public class Machine {
     public void chooseMenu() throws InterruptedException {
         showMenu();
         System.out.print("Choose Menu : ");
-        customerMenu = scn.nextInt();
+        customerMenu = scn.nextInt()-1;
         for (int i = 0; i < allMenuAndPrice.length; i++) {
             if (customerMenu == i) {
                 menuPrice = allMenuAndPrice[i].getPrice();
+                break;
             }
         }
-        System.out.println("Your menu is : " + allMenuAndPrice[customerMenu - 1].getName());
+        System.out.println("Your menu is : " + allMenuAndPrice[customerMenu].getName());
         System.out.println("Price : " + menuPrice);
-        System.out.println("Shaking Time : " + allMenuAndPrice[customerMenu - 1].getShakeTime());
+        System.out.println("Shaking Time : " + allMenuAndPrice[customerMenu].getShakeTime());
         receiveMoneyFromCustomer();
-        shaking(allMenuAndPrice[customerMenu - 1].getShakeTime());
+        shaking(allMenuAndPrice[customerMenu].getShakeTime());
     }
 
     //==========CHOICE 3==========

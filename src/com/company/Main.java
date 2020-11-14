@@ -9,6 +9,7 @@ public class Main {
         String isDone;
         Machine mc = new Machine(1000);
         mc.addMoneyToMachine(5000);
+        int choices;
         System.out.println("=====WELCOME TO BARTENDER MACHINE=====\n\n");
 //        ==========================================================================================================================================
         do {
@@ -17,7 +18,7 @@ public class Main {
                     "\n2.Choose Menu" +
                     "\n3.Creat your own menu");
             System.out.print("Your Choice : ");
-            int choices = scn.nextInt();
+            choices = scn.nextInt();
             switch (choices) {
                 case 1:
                     mc.showMenu();
@@ -29,7 +30,6 @@ public class Main {
                     mc.createMenu();
                     break;
             }
-
             System.out.print("\nDone ? " + "  " + "Yes or No : ");
             isDone = scn.next().toLowerCase();
             if ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no"))) {

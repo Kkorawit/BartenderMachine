@@ -19,7 +19,6 @@ public class Machine {
     private int change;
     private int customerMoney;
 
-
     //========== CHOICE 1 ==========
     public void showMenu() {
         System.out.println("========== MENU ==========");
@@ -27,12 +26,17 @@ public class Machine {
             System.out.println( (i+1) + " " +  allMenuAndPrice[i].getName());
         }
     }
-
-    //==========CHOICE 2==========
+    //==============================
+    //========== CHOICE 2 ==========
     public void chooseMenu() throws InterruptedException {
         showMenu();
         System.out.print("Choose Menu : ");
         customerMenu = scn.nextInt()-1;
+        if(customerMenu >allMenuAndPrice.length-1){
+            System.out.println("===== WE DON'T HAVE THIS MENU =====");
+            System.out.println("===== Please TRY AGAIN =====");
+            chooseMenu();
+        }
         for (int i = 0; i < allMenuAndPrice.length; i++) {
             if (customerMenu == i) {
                 menuPrice = allMenuAndPrice[i].getPrice();
@@ -46,8 +50,8 @@ public class Machine {
         receiveMoneyFromCustomer();
         shaking(allMenuAndPrice[customerMenu].getShakeTime());
     }
-
-    //==========CHOICE 3==========
+    //==============================
+    //========== CHOICE 3 ==========
     public void createMenu() throws InterruptedException {
         System.out.println("This is Ingredient");
         showAllIngredient();
@@ -57,6 +61,7 @@ public class Machine {
         receiveMoneyFromCustomer();
         addIngredient();
         shaking(shakeTime);
+
     }
 
     public void showAllIngredient() {
@@ -68,10 +73,18 @@ public class Machine {
     public void chooseIngredient() {
         System.out.println("-+-+-+ Please Choose your Ingredients +-+-+-");
         resetCustomerIngerdients();
-        for (int count = 0; count < customerIngredients.length; count++) {
+
+
+            for (int count = 0; count < customerIngredients.length; count++) {
             chooseIngredients = 0;
             System.out.print("Ingredient " + (count + 1) + " : ");
             chooseIngredients = scn.nextInt() - 1;
+            if (chooseIngredients > allIngredientAndPRice.length-1) {
+                System.out.println("===== DON'T HAVE THIS INGREDIENT =====");
+                System.out.println("===== PLEASE TRY AGAIN =====");
+                chooseIngredient();
+              }
+            }
             for (int i = 0; i < customerIngredients.length; i++) {
                 if (customerIngredients[i] == 0) {
                     customerIngredients[i] = chooseIngredients;
@@ -79,7 +92,6 @@ public class Machine {
                     break;
                 }
             }
-        }
     }
 
     public void showIngredient() {
@@ -123,7 +135,7 @@ public class Machine {
             totalPrice = 0;
         }
     }
-
+    //===========================================
     //    ========== MONEY TRANSACTION ==========
     public Machine(int moneyInMachine) {
         this.moneyInMachine = moneyInMachine;
@@ -148,13 +160,9 @@ public class Machine {
             moneyInMachine -= change;
             System.out.println("Your Change : " + change + " Bath.");
         }
-//        if(customerMoney < menuPrice){
-//            System.out.println("*****NOT ENOUGH MONEY*****");
-//            System.out.println("**PLEASE INPUT MORE MONEY**");
-//            receiveMoneyFromCustomer();
-
     }
     public void checkMoney(){
         System.out.println(moneyInMachine);
     }
 }
+    //============================================

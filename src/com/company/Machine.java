@@ -42,6 +42,7 @@ public class Machine {
         System.out.println("Your menu is : " + allMenuAndPrice[customerMenu].getName());
         System.out.println("Price : " + menuPrice);
         System.out.println("Shaking Time : " + allMenuAndPrice[customerMenu].getShakeTime());
+        totalPrice += allMenuAndPrice[customerMenu].getPrice();
         receiveMoneyFromCustomer();
         shaking(allMenuAndPrice[customerMenu].getShakeTime());
     }
@@ -100,7 +101,7 @@ public class Machine {
     }
 
     public void shaking(int time) throws InterruptedException {
-        System.out.println("***StART SHAKING***");
+        System.out.println("***START SHAKING***");
         do {
             Thread.sleep(1000);
             System.out.println("Shaking Finish in : " + time);
@@ -142,7 +143,7 @@ public class Machine {
             receiveMoneyFromCustomer();
         } else if (customerMoney > totalPrice || customerMoney > menuPrice) {
             change = customerMoney - totalPrice;
-            change = customerMoney - menuPrice;
+           // change = customerMoney - menuPrice;
             moneyInMachine += customerMoney;
             moneyInMachine -= change;
             System.out.println("Your Change : " + change + " Bath.");
@@ -151,8 +152,9 @@ public class Machine {
 //            System.out.println("*****NOT ENOUGH MONEY*****");
 //            System.out.println("**PLEASE INPUT MORE MONEY**");
 //            receiveMoneyFromCustomer();
-//        }
 
     }
-
+    public void checkMoney(){
+        System.out.println(moneyInMachine);
+    }
 }

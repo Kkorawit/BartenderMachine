@@ -9,7 +9,6 @@ public class Main {
         String isDone;
         Machine mc = new Machine(1000);
         mc.addMoneyToMachine(5000);
-
         System.out.println("=====WELCOME TO BARTENDER MACHINE=====\n\n");
 //        ==========================================================================================================================================
         do {
@@ -30,7 +29,6 @@ public class Main {
                     mc.createMenu();
                     break;
             }
-
 
             System.out.print("\nDone ? " + "  " + "Yes or No : ");
             isDone = scn.next().toLowerCase();

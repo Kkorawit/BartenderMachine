@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Scanner scn = new Scanner(System.in);
         String isDone;
-        Machine mc = new Machine(1000);
+        Machine mc = new Machine(0);
         mc.addMoneyToMachine(5000);
         int choices;
         System.out.println("=====WELCOME TO BARTENDER MACHINE=====\n\n");
@@ -32,12 +32,12 @@ public class Main {
             }
             System.out.print("\nDone ? " + "  " + "Yes or No : ");
             isDone = scn.next().toLowerCase();
-            if ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no"))) {
+                if ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no"))) {
 
                     System.out.println("Please Try Again");
                     System.out.print("Done ?" + "  " + "Yes or No :");
                     isDone = scn.next().toLowerCase();
-            }
+                }
         } while (isDone.equals("no") );
         System.out.println("===== Thank You <3 =====");
     }

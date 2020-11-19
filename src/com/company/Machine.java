@@ -6,19 +6,19 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Machine {
-    private int moneyInMachine; //เงินในตู้
+    private int moneyInMachine;
     Scanner scn = new Scanner(System.in);
-    private int chooseIngredients;//วัตถุดิบที่ลูกค้าเลือก
-    private int[] customerIngredients = new int[5];//เก็บตัวแปรวัตถุดิบที่ลูกค้าเลือก
-    private int customerMenu;//รับค่าเมนูที่ลูกค้าเลือก
+    private int chooseIngredients;
+    private int[] customerIngredients = new int[5];
+    private int customerMenu;
     private Ingredient[] allIngredientAndPRice = {new Ingredient("WATER", 10), new Ingredient("LEMON", 20), new Ingredient("BROWNSUGAR", 15), new Ingredient("COLDWATER", 13), new Ingredient("ICE", 8), new Ingredient("LIMEADE", 30), new Ingredient("STRAWBERRY", 27), new Ingredient("LEMONJUICE", 29), new Ingredient("MINT", 12), new Ingredient("POMEGRANATESYRUP", 34), new Ingredient("LEMONSODA", 26), new Ingredient("CHERRYSYRUP", 42), new Ingredient("ROSEMARRYSYRUP", 24), new Ingredient("PINEAPPLEJUICE", 28)};
     private Menu[] allMenuAndPrice = {new Menu("LEMONADE", 50, 10), new Menu("GRAPE FRUIT ROSEMARRY", 60, 10), new Menu("CHIRLEY TEMPLE", 70, 70), new Menu("STRAWBERRY LEMONADE", 80, 10), new Menu("PINEAPPLE CHERRY MOCKTAIL", 10, 50)};
-    private int menuPrice;//ดึงค่าราคาเมนูที่ลูกค้าเลือกจาก allMenuAndPrice
-    private int totalPrice;//ราคาทั้งหมดจากเมนูหรือวัตถุดิบ
-    private int time;//เวลาที่ลูกค้าต้องการในการเขย่าผสมวัตถุดิบ
-    private int shakeTime;//เวลาเขย่า
-    private int change;//เงินทอน
-    private int customerMoney;//เงินที่ลูกค้าใส่เข้ามา
+    private int menuPrice;
+    private int totalPrice;
+    private int time;
+    private int shakeTime;
+    private int change;
+    private int customerMoney;
 
     //========== CHOICE 1 ========== แสดงเมนู
     public void showMenu() {
@@ -28,7 +28,7 @@ public class Machine {
         }
     }
     //==============================
-    //========== CHOICE 2 ========== แสดงเมนูและให้ลูกค้าเลือกเมนู
+    //========== CHOICE 2 ==========
     public void chooseMenu() throws InterruptedException {
         showMenu();
         System.out.print("Choose Menu : ");
@@ -55,13 +55,13 @@ public class Machine {
     //========== CHOICE 3 ==========
     public void createMenu() throws InterruptedException {//ให้ลูกค้าสร้างเมนูเอง
         System.out.println("This is Ingredient");
-        showAllIngredient(); // แสดงวัตถุดิบทั้งหมด
-        chooseIngredient(); //เลือกวัตถุดิบที่ลูกค้าต้องการ
-        showIngredient(); //แสดงวัตถุดิบที่ลูกค้าเลือก
-        chooseShakeTime(); //เลือกเวลาเขย่า
-        receiveMoneyFromCustomer(); //รับเงินจากลูกค้า
-        addIngredient(); //ใช้แสดงว่า
-        shaking(shakeTime); //แสดงให้ดูว่าเขย่าอีกกี่วิ
+        showAllIngredient();
+        chooseIngredient();
+        showIngredient();
+        chooseShakeTime();
+        receiveMoneyFromCustomer();
+        addIngredient();
+        shaking(shakeTime);
     }
 
     public void showAllIngredient() {
@@ -148,7 +148,7 @@ public class Machine {
         this.moneyInMachine += money;
     }
 
-    public void receiveMoneyFromCustomer() { //สำหรับรับเงินและคิดเงิน
+    public void receiveMoneyFromCustomer() {
         System.out.print("Please input your money : ");
         int money = scn.nextInt();
         customerMoney += money;
@@ -174,6 +174,6 @@ public class Machine {
     }
     public void checkMoney(){
         System.out.println(moneyInMachine);
-    } // ดูเงินในตู้
+    }
 }
     //============================================

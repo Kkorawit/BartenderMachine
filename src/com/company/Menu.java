@@ -6,6 +6,12 @@ public class Menu {
     private int shakeTime;
 
 
+    /**
+     * Constructure of Menu
+     * @param name Name of menu
+     * @param price Price of menu
+     * @param shakeTime Length of shking time of menu
+     */
     public Menu(String name, int price, int shakeTime) {
         this.name = name;
         this.price = price;

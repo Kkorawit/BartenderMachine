@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 import java.lang.Thread;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class Machine {
@@ -20,6 +20,10 @@ public class Machine {
     private int change;
     private int customerMoney;
 
+
+    /**
+     * Show all menu that machine have.
+     */
     //========== CHOICE 1 ========== แสดงเมนู
     public void showMenu() {
         System.out.println("========== MENU ==========");
@@ -27,6 +31,11 @@ public class Machine {
             System.out.println( (i+1) + " " +  allMenuAndPrice[i].getName());
         }
     }
+
+    /**
+     * Let Customer choose menu
+     * @throws InterruptedException
+     */
     //==============================
     //========== CHOICE 2 ==========
     public void chooseMenu() throws InterruptedException {
@@ -51,6 +60,7 @@ public class Machine {
         receiveMoneyFromCustomer();
         shaking(allMenuAndPrice[customerMenu].getShakeTime());
     }
+
     //==============================
     //========== CHOICE 3 ==========
     public void createMenu() throws InterruptedException {//ให้ลูกค้าสร้างเมนูเอง
@@ -64,12 +74,18 @@ public class Machine {
         shaking(shakeTime);
     }
 
+    /**
+     * Show all ingredient that machine have
+     */
     public void showAllIngredient() {
         for (int i = 0; i < allIngredientAndPRice.length; i++) {
             System.out.println((i + 1) + " : " + allIngredientAndPRice[i].getName() + " " + allIngredientAndPRice[i].getPrice() + " Bath.");
         }
     }
 
+    /**
+     * Let customer choose ingredients
+     */
     public void chooseIngredient() {
         System.out.println("-+-+-+ Please Choose your Ingredients +-+-+-");
         resetCustomerIngerdients();
@@ -93,6 +109,9 @@ public class Machine {
         }
     }
 
+    /**
+     * Show all ingredient chosen by customer.
+     */
     public void showIngredient() {
         System.out.print("Your Ingredients :");
         for (int i = 0; i < customerIngredients.length; i++) {
@@ -101,6 +120,10 @@ public class Machine {
         System.out.println("\nTotal Price : " + totalPrice);
     }
 
+    /**
+     * Let customer choose length of shaking time.
+     * @throws InterruptedException
+     */
     public void chooseShakeTime() throws InterruptedException {
         do {
             System.out.print("Choose Your Shaking Time (5-15 second) : ");
@@ -111,6 +134,10 @@ public class Machine {
         } while (time < 5 || time > 15);
     }
 
+    /**
+     * @param time length of shaking time.
+     * @throws InterruptedException
+     */
     public void shaking(int time) throws InterruptedException {
         if(change != customerMoney) {
             System.out.println("");
@@ -125,6 +152,10 @@ public class Machine {
         }
     }
 
+    /**
+     * Add ingredient chosen by customer.
+     * @throws InterruptedException
+     */
     public void addIngredient() throws InterruptedException {
         for (int i = 0; i < customerIngredients.length; i++) {
             Thread.sleep(500);
@@ -132,7 +163,10 @@ public class Machine {
         }
     }
 
-    public void resetCustomerIngerdients() {//ทำให้วัตถุดิบที่ลูกค้าเลือกเป็น 0
+    /**
+     * Reset ingredient chosen by customer to all null.
+     */
+    public void resetCustomerIngerdients() {
         for (int i = 0; i < customerIngredients.length; i++) {
             customerIngredients[i] = 0;
             totalPrice = 0;
@@ -140,13 +174,22 @@ public class Machine {
     }
     //===========================================
     //    ========== MONEY TRANSACTION ==========
+    /**
+     * Creat object and add money to machine
+     * @param moneyInMachine amount of money
+     */
     public Machine(int moneyInMachine) {
         this.moneyInMachine = moneyInMachine;
     }
 
+    /**
+     * Add money to machine
+     * @param money amount of machine for adding to.
+     */
     public void addMoneyToMachine(int money) { //เพิ่มตังค์ในเครื่อง
         this.moneyInMachine += money;
     }
+
 
     public void receiveMoneyFromCustomer() {
         System.out.print("Please input your money : ");

@@ -24,7 +24,7 @@ public class Machine {
     /**
      * Show all menu that machine have.
      */
-    //========== CHOICE 1 ========== แสดงเมนู
+    //========== CHOICE 1 ==========
     public void showMenu() {
         System.out.println("========== MENU ==========");
         for (int i = 0; i < allMenuAndPrice.length; i++) {
@@ -63,7 +63,7 @@ public class Machine {
 
     //==============================
     //========== CHOICE 3 ==========
-    public void createMenu() throws InterruptedException {//ให้ลูกค้าสร้างเมนูเอง
+    public void createMenu() throws InterruptedException {
         System.out.println("This is Ingredient");
         showAllIngredient();
         chooseIngredient();

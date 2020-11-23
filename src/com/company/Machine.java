@@ -102,7 +102,7 @@ public class Machine {
         for(int i = 0; i < customerIngredients.length;i++){
             System.out.print("Inredient => " + (i+1) + " : ");
             chooseIngredients = scn.nextInt()-1;
-            if(chooseIngredients > allIngredientAndPRice.length-1){
+            if(chooseIngredients > allIngredientAndPRice.length-1 || chooseIngredients < 0){
                 do{
                     System.out.println("=== Don't have this ingredient ===");
                     System.out.println("=== Try again ===");

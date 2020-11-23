@@ -28,7 +28,8 @@ public class Machine {
     public void showMenu() {
         System.out.println("\t\t~=~=~= Menu =~=~=~");
         for (int i = 0; i < allMenuAndPrice.length; i++) {
-            System.out.println( (i+1) + " " +  allMenuAndPrice[i].getName());
+            System.out.println( (i+1) + " " +  allMenuAndPrice[i].getName() + "" +
+                    "\nPrice : " + allMenuAndPrice[i].getPrice());
         }
     }
 

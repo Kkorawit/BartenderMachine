@@ -26,7 +26,7 @@ public class Machine {
      */
     //========== CHOICE 1 ==========
     public void showMenu() {
-        System.out.println("========== MENU ==========");
+        System.out.println("\t\t~=~=~= Menu =~=~=~");
         for (int i = 0; i < allMenuAndPrice.length; i++) {
             System.out.println( (i+1) + " " +  allMenuAndPrice[i].getName());
         }
@@ -53,9 +53,11 @@ public class Machine {
                 break;
             }
         }
+        System.out.println("=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.");
         System.out.println("Your menu is : " + allMenuAndPrice[customerMenu].getName());
         System.out.println("Price : " + menuPrice);
         System.out.println("Shaking Time : " + allMenuAndPrice[customerMenu].getShakeTime());
+        System.out.println("=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.");
         totalPrice += allMenuAndPrice[customerMenu].getPrice();
         receiveMoneyFromCustomer();
         shaking(allMenuAndPrice[customerMenu].getShakeTime());
@@ -68,6 +70,7 @@ public class Machine {
     //==============================
     //========== CHOICE 3 ==========
     public void createMenu() throws InterruptedException {
+        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
         System.out.println("This is Ingredient");
         showAllIngredient();
         chooseIngredient();
@@ -90,45 +93,19 @@ public class Machine {
     /**
      * Let customer choose ingredients
      */
-//    public void chooseIngredient() {
-//        System.out.println("-+-+-+ Please Choose your Ingredients +-+-+-");
-//        resetCustomerIngerdients();
-//
-//        for (int count = 0; count < customerIngredients.length; count++) {
-//            chooseIngredients = 0;
-//            System.out.print("Ingredient " + (count + 1) + " : ");
-//            chooseIngredients = scn.nextInt() - 1;
-//
-//
-//            if (chooseIngredients > allIngredientAndPRice.length -1) {
-//
-//                System.out.println("===== DON'T HAVE THIS INGREDIENT =====");
-//                System.out.println("===== PLEASE TRY AGAIN =====");
-//                chooseIngredient();
-//            }
-//
-//            for (int i = 0; i < customerIngredients.length; i++) {
-//                if (customerIngredients[i] == 0) {
-//                    customerIngredients[i] = chooseIngredients;
-//                    totalPrice += allIngredientAndPRice[customerIngredients[i]].getPrice();
-//                    break;
-//                }
-//            }
-//        }
-//    }
     public void chooseIngredient(){
         System.out.println("=*=* Please Choose ingredient *=*=");
         resetCustomerIngerdients();
 
 
         for(int i = 0; i < customerIngredients.length;i++){
-            System.out.println("Inredient => " + (i+1) + " : ");
+            System.out.print("Inredient => " + (i+1) + " : ");
             chooseIngredients = scn.nextInt()-1;
             if(chooseIngredients > allIngredientAndPRice.length-1){
                 do{
                     System.out.println("=== Don't have this ingredient ===");
                     System.out.println("=== Try again ===");
-                    System.out.println("Inredient => " + (i+1) + " : ");
+                    System.out.print("Inredient => " + (i+1) + " : ");
                     chooseIngredients = scn.nextInt()-1;
                 }while (chooseIngredients > allIngredientAndPRice.length-15);
             }
@@ -145,6 +122,7 @@ public class Machine {
      * Show all ingredient chosen by customer.
      */
     public void showIngredient() {
+        System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*");
         System.out.print("Your Ingredients :");
         for (int i = 0; i < customerIngredients.length; i++) {
             System.out.print(" " + allIngredientAndPRice[customerIngredients[i]].getName());
@@ -174,13 +152,13 @@ public class Machine {
         if(change != customerMoney) {
             System.out.println("");
 
-            System.out.println("***START SHAKING***");
+            System.out.println("*!*!* START SHAKING *!*!*");
             do {
                 Thread.sleep(1000);
-                System.out.println("Shaking Finish in : " + time);
+                System.out.println("Shaking Finish in ... " + time + " ...");
                 time--;
             } while (time != 0);
-            System.out.println("***FINISH!!***");
+            System.out.println("=~=~ FINISH!! ~=~=");
         }
     }
 
@@ -236,7 +214,6 @@ public class Machine {
             System.out.println("**PLEASE INPUT MORE MONEY**");
             receiveMoneyFromCustomer();
         } else if (customerMoney > totalPrice || customerMoney > menuPrice) {
-           // change = customerMoney - menuPrice;
             moneyInMachine += customerMoney;
             moneyInMachine -= change;
             System.out.println("Your Change : " + change + " Bath.");

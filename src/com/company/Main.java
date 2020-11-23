@@ -10,14 +10,14 @@ public class Main {
         Machine mc = new Machine(0);
         mc.addMoneyToMachine(5000);
         int choices;
-        System.out.println("=====WELCOME TO BARTENDER MACHINE=====\n\n");
+        System.out.println("\n\n=*=*=* WELCOME TO BARTENDER MACHINE *=*=*=\n");
 //        ==========================================================================================================================================
         do {
-            System.out.println("Choice : " +
-                    "\n1.Show Menu" +
-                    "\n2.Choose Menu" +
-                    "\n3.Creat your own menu");
-            System.out.print("Your Choice : ");
+            System.out.println("\t\t\t=-=-= Menu =-=-=" +
+                    "\n\t1 > Show Menu <" +
+                    "\n\t2 > Choose Menu <" +
+                    "\n\t3 > Creat your own menu <");
+            System.out.print("\nPlease select menu : ");
             choices = scn.nextInt();
             switch (choices) {
                 case 1:
@@ -30,7 +30,7 @@ public class Main {
                     mc.createMenu();
                     break;
             }
-            System.out.print("\nDone ? " + "  " + "Yes or No : ");
+            System.out.print("\nAre you done yet?" + "  " + "(Yes or No) : ");
             isDone = scn.next().toLowerCase();
                     if ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no"))) {
                         do{

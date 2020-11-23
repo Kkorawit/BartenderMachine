@@ -78,8 +78,9 @@ public class Machine {
         showIngredient();
         chooseShakeTime();
         receiveMoneyFromCustomer();
-        addIngredient();
-        shaking(shakeTime);
+        if (change == customerMoney){}
+//        addIngredient();
+//        shaking(shakeTime);
     }
 
     /**
@@ -205,28 +206,38 @@ public class Machine {
     /**
      * Customer inout their and calculate change if has
      */
-    public void receiveMoneyFromCustomer() {
-        System.out.print("Please input your money : ");
-        int money = scn.nextInt();
-        customerMoney += money;
-        change = customerMoney - totalPrice;
-        if (customerMoney < totalPrice || customerMoney < menuPrice) {
-            System.out.println("*****NOT ENOUGH MONEY*****");
-            System.out.println("**PLEASE INPUT MORE MONEY**");
-            receiveMoneyFromCustomer();
-        } else if (customerMoney > totalPrice || customerMoney > menuPrice) {
-            moneyInMachine += customerMoney;
-            moneyInMachine -= change;
-            System.out.println("Your Change : " + change + " Bath.");
+    public void receiveMoneyFromCustomer() throws InterruptedException {
+        customerMoney = 0;
+        do {
+            System.out.print("Please input your money : ");
+            int money = scn.nextInt();
+            customerMoney += money;
+            change = customerMoney - totalPrice;
+            if (customerMoney < totalPrice || customerMoney < menuPrice) {
+                System.out.println("*****NOT ENOUGH MONEY*****");
+                System.out.println("**PLEASE INPUT MORE MONEY**");
+            }
+        }while (customerMoney < totalPrice || customerMoney < menuPrice);
+        if (customerMoney > totalPrice || customerMoney > menuPrice) {
+            if(moneyInMachine < change){
+                System.out.println("=== Not enough change ===");
+                System.out.println("*=*=*=*= PLEASE CONTACT ADMINISTRATOR =*=*=*=*");
+                change = customerMoney;
+                System.out.println("THIS IS YOUR MONEY : " + change + " Bath.");
 
-        }
-        if(moneyInMachine < change){
-            System.out.println("=== Not enough change ===");
-            System.out.println("*=*=*=*= PLEASE CONTACT ADMINISTRATOR =*=*=*=*");
-            change = customerMoney;
-            System.out.println("THIS IS YOUR MONEY : " + change + " Bath.");
+            }else if(moneyInMachine > change) {
+                moneyInMachine += customerMoney;
+                moneyInMachine -= change;
+                System.out.println("Your Change : " + change + " Bath.");
+                addIngredient();
+                shaking(shakeTime);
+            }
         }
 
     }
 }
+
+
+
+
     //============================================

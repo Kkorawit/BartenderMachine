@@ -12,7 +12,7 @@ public class Machine {
     private int[] customerIngredients = new int[5];
     private int customerMenu;
     private Ingredient[] allIngredientAndPRice = {new Ingredient("WATER", 10), new Ingredient("LEMON", 20), new Ingredient("BROWNSUGAR", 15), new Ingredient("COLDWATER", 13), new Ingredient("ICE", 8), new Ingredient("LIMEADE", 30), new Ingredient("STRAWBERRY", 27), new Ingredient("LEMONJUICE", 29), new Ingredient("MINT", 12), new Ingredient("POMEGRANATESYRUP", 34), new Ingredient("LEMONSODA", 26), new Ingredient("CHERRYSYRUP", 42), new Ingredient("ROSEMARRYSYRUP", 24), new Ingredient("PINEAPPLEJUICE", 28)};
-    private Menu[] allMenuAndPrice = {new Menu("LEMONADE", 50, 10), new Menu("GRAPE FRUIT ROSEMARRY", 60, 10), new Menu("CHIRLEY TEMPLE", 70, 70), new Menu("STRAWBERRY LEMONADE", 80, 10), new Menu("PINEAPPLE CHERRY MOCKTAIL", 10, 50)};
+    private Menu[] allMenuAndPrice = {new Menu("LEMONADE", 95, 10), new Menu("GRAPE FRUIT ROSEMARRY", 115, 10), new Menu("CHIRLEY TEMPLE", 99, 12), new Menu("STRAWBERRY LEMONADE", 85, 13), new Menu("PINEAPPLE CHERRY MOCKTAIL", 135, 11)};
     private int menuPrice;
     private int totalPrice;
     private int time;

@@ -97,11 +97,14 @@ public class Machine {
             chooseIngredients = 0;
             System.out.print("Ingredient " + (count + 1) + " : ");
             chooseIngredients = scn.nextInt() - 1;
-            if (chooseIngredients > allIngredientAndPRice.length - 1) {
-                System.out.println("===== DON'T HAVE THIS INGREDIENT =====");
-                System.out.println("===== PLEASE TRY AGAIN =====");
-                chooseIngredient();
-            }
+            do {
+                if (chooseIngredients > allIngredientAndPRice.length - 1) {
+                    System.out.println("===== DON'T HAVE THIS INGREDIENT =====");
+                    System.out.println("===== PLEASE TRY AGAIN =====");
+                    System.out.print("Ingredient " + (count + 1) + " : ");
+                    chooseIngredients = scn.nextInt() - 1;
+                }
+            }while (chooseIngredients > allIngredientAndPRice.length - 1);
 
             for (int i = 0; i < customerIngredients.length; i++) {
                 if (customerIngredients[i] == 0) {

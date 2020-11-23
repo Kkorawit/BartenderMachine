@@ -90,32 +90,57 @@ public class Machine {
     /**
      * Let customer choose ingredients
      */
-    public void chooseIngredient() {
-        System.out.println("-+-+-+ Please Choose your Ingredients +-+-+-");
+//    public void chooseIngredient() {
+//        System.out.println("-+-+-+ Please Choose your Ingredients +-+-+-");
+//        resetCustomerIngerdients();
+//
+//        for (int count = 0; count < customerIngredients.length; count++) {
+//            chooseIngredients = 0;
+//            System.out.print("Ingredient " + (count + 1) + " : ");
+//            chooseIngredients = scn.nextInt() - 1;
+//
+//
+//            if (chooseIngredients > allIngredientAndPRice.length -1) {
+//
+//                System.out.println("===== DON'T HAVE THIS INGREDIENT =====");
+//                System.out.println("===== PLEASE TRY AGAIN =====");
+//                chooseIngredient();
+//            }
+//
+//            for (int i = 0; i < customerIngredients.length; i++) {
+//                if (customerIngredients[i] == 0) {
+//                    customerIngredients[i] = chooseIngredients;
+//                    totalPrice += allIngredientAndPRice[customerIngredients[i]].getPrice();
+//                    break;
+//                }
+//            }
+//        }
+//    }
+    public void chooseIngredient(){
+        System.out.println("=*=* Please Choose ingredient *=*=");
         resetCustomerIngerdients();
-        for (int count = 0; count < customerIngredients.length; count++) {
-            chooseIngredients = 0;
-            System.out.print("Ingredient " + (count + 1) + " : ");
-            chooseIngredients = scn.nextInt() - 1;
-            do {
-                if (chooseIngredients > allIngredientAndPRice.length - 1) {
-                    System.out.println("===== DON'T HAVE THIS INGREDIENT =====");
-                    System.out.println("===== PLEASE TRY AGAIN =====");
-                    System.out.print("Ingredient " + (count + 1) + " : ");
-                    chooseIngredients = scn.nextInt() - 1;
-                }
-            }while (chooseIngredients > allIngredientAndPRice.length - 1);
 
-            for (int i = 0; i < customerIngredients.length; i++) {
-                if (customerIngredients[i] == 0) {
-                    customerIngredients[i] = chooseIngredients;
-                    totalPrice += allIngredientAndPRice[customerIngredients[i]].getPrice();
+
+        for(int i = 0; i < customerIngredients.length;i++){
+            System.out.println("Inredient => " + (i+1) + " : ");
+            chooseIngredients = scn.nextInt()-1;
+            if(chooseIngredients > allIngredientAndPRice.length-1){
+                do{
+                    System.out.println("=== Don't have this ingredient ===");
+                    System.out.println("=== Try again ===");
+                    System.out.println("Inredient => " + (i+1) + " : ");
+                    chooseIngredients = scn.nextInt()-1;
+                }while (chooseIngredients > allIngredientAndPRice.length-15);
+            }
+            for (int c = 0; c < customerIngredients.length; c++) {
+                if (customerIngredients[c] == 0) {
+                    customerIngredients[c] = chooseIngredients;
+                    totalPrice += allIngredientAndPRice[customerIngredients[c]].getPrice();
                     break;
                 }
             }
         }
     }
-
     /**
      * Show all ingredient chosen by customer.
      */

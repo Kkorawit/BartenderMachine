@@ -108,7 +108,7 @@ public class Machine {
                     System.out.println("=== Try again ===");
                     System.out.print("Inredient => " + (i+1) + " : ");
                     chooseIngredients = scn.nextInt()-1;
-                }while (chooseIngredients > allIngredientAndPRice.length-1);
+                }while (chooseIngredients > allIngredientAndPRice.length-1 || chooseIngredients < 0);
             }
             for (int c = 0; c < customerIngredients.length; c++) {
                 if (customerIngredients[c] == 0) {

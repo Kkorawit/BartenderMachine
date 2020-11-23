@@ -61,6 +61,10 @@ public class Machine {
         shaking(allMenuAndPrice[customerMenu].getShakeTime());
     }
 
+    /**
+     * Customer choose to create their own menu
+     * @throws InterruptedException
+     */
     //==============================
     //========== CHOICE 3 ==========
     public void createMenu() throws InterruptedException {
@@ -191,6 +195,9 @@ public class Machine {
     }
 
 
+    /**
+     * Customer inout their and calculate change if has
+     */
     public void receiveMoneyFromCustomer() {
         System.out.print("Please input your money : ");
         int money = scn.nextInt();
@@ -214,9 +221,6 @@ public class Machine {
             System.out.println("THIS IS YOUR MONEY : " + change + " Bath.");
         }
 
-    }
-    public void checkMoney(){
-        System.out.println(moneyInMachine);
     }
 }
     //============================================

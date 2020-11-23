@@ -17,7 +17,19 @@ public class Menu {
         this.price = price;
         this.shakeTime = shakeTime;
     }
+
+    /**
+     * @return name of Menu
+     */
     public String getName() {return name;}
+
+    /**
+     * @return Price of menu
+     */
     public int getPrice() {return price;}
+
+    /**
+     * @return length of shaking time of menu
+     */
     public int getShakeTime() {return shakeTime;}
 }

@@ -40,14 +40,16 @@ public class Machine {
     //==============================
     //========== CHOICE 2 ==========
     public void chooseMenu() throws InterruptedException {
-        showMenu();
-        System.out.print("Choose Menu : ");
-        customerMenu = scn.nextInt()-1;
-        if(customerMenu >allMenuAndPrice.length-1){
-            System.out.println("===== WE DON'T HAVE THIS MENU =====");
-            System.out.println("===== Please TRY AGAIN =====");
-            chooseMenu();
-        }
+       do {
+           showMenu();
+           System.out.print("Choose Menu : ");
+           customerMenu = scn.nextInt() - 1;
+           if (customerMenu > allMenuAndPrice.length - 1 || customerMenu < 0) {
+               System.out.println("===== WE DON'T HAVE THIS MENU =====");
+               System.out.println("===== Please TRY AGAIN =====");
+//               chooseMenu();
+           }
+       }while (customerMenu > allMenuAndPrice.length - 1 || customerMenu < 0);
         for (int i = 0; i < allMenuAndPrice.length; i++) {
             if (customerMenu == i) {
                 menuPrice = allMenuAndPrice[i].getPrice();
@@ -61,7 +63,6 @@ public class Machine {
         System.out.println("=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.=.");
         totalPrice += allMenuAndPrice[customerMenu].getPrice();
         receiveMoneyFromCustomer();
-        shaking(allMenuAndPrice[customerMenu].getShakeTime());
     }
 
     /**
@@ -229,15 +230,15 @@ public class Machine {
                 moneyInMachine += customerMoney;
                 moneyInMachine -= change;
                 System.out.println("Your Change : " + change + " Bath.");
-                addIngredient();
-                shaking(shakeTime);
+                if(customerMenu == 0 ){
+                    addIngredient();
+                    shaking(shakeTime);
+                }
+                 if(customerMenu!= 0){
+                    shaking(allMenuAndPrice[customerMenu].getShakeTime());
+                }
             }
         }
 
     }
 }
-
-
-
-
-    //============================================

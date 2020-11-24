@@ -35,7 +35,7 @@ public class Main {
                     if ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no"))) {
                         do{
                         System.out.println("Please Try Again");
-                        System.out.print("Done ?" + "  " + "Yes or No :");
+                        System.out.print("Are you done yes?" + "  " + "Yes or No :");
                         isDone = scn.next().toLowerCase();
                         }while ((isDone.equals("no") || !isDone.equals("yes")) && (isDone.equals("yes") || !isDone.equals("no")));
                     }
